@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f8d8e5">
+<title>A Little Surprise For You ♡</title>
+<style>
+:root{
+  --pink:#f7c8da; --deep:#b85e82; --rose:#e99ab8;
+  --cream:#fff8f5; --ink:#75445a; --pale:#fff0f5;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; min-height:100vh; color:var(--ink);
+  font-family: Georgia, "Times New Roman", serif;
+  background:
+    radial-gradient(ellipse at 12% 18%,rgba(255,255,255,.85) 0 5%,transparent 30%),
+    radial-gradient(ellipse at 90% 72%,rgba(255,255,255,.65) 0 4%,transparent 28%),
+    linear-gradient(135deg,#fce5ed 0%,#f8cddd 48%,#fbeaf0 100%);
+  overflow-x:hidden;
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.27;
+  background-image:radial-gradient(#fff 1px,transparent 1.5px);
+  background-size:24px 24px;
+}
+.frame{
+  position:fixed;inset:13px;border:1px solid rgba(184,94,130,.35);
+  border-radius:22px;pointer-events:none;z-index:5;
+}
+.corner{
+  position:fixed;z-index:2;pointer-events:none;font-size:clamp(54px,9vw,100px);
+  color:#d77f9f;opacity:.75;filter:drop-shadow(0 5px 7px #fff7);
+}
+.c1{top:14px;left:16px;transform:rotate(-22deg)}
+.c2{top:12px;right:18px;transform:rotate(20deg)}
+.c3{bottom:8px;left:18px;transform:rotate(18deg)}
+.c4{bottom:12px;right:16px;transform:rotate(-18deg)}
+.bow{
+  position:fixed;z-index:2;pointer-events:none;color:#c76d91;font-size:36px;opacity:.65
+}
+.bow.one{top:22%;left:4%;transform:rotate(-15deg)}
+.bow.two{right:5%;bottom:25%;transform:rotate(15deg)}
+.petal{
+  position:fixed;top:-12vh;z-index:3;pointer-events:none;
+  width:12px;height:18px;border-radius:80% 10% 80% 10%;
+  background:linear-gradient(135deg,#fff0f5,#df83a6);
+  opacity:.8;animation:fall linear infinite;
+}
+@keyframes fall{to{transform:translate3d(var(--drift),115vh,0) rotate(620deg)}}
+main{width:min(900px,calc(100% - 42px));margin:auto;padding:76px 0 90px;position:relative;z-index:1}
+.hero{text-align:center;min-height:78vh;display:flex;flex-direction:column;justify-content:center;align-items:center}
+.eyebrow{letter-spacing:.28em;text-transform:uppercase;font:11px Arial,sans-serif;color:#b96b89}
+h1{font-size:clamp(38px,8vw,76px);font-weight:normal;line-height:1.05;margin:18px 0 12px;color:#a94f75;text-shadow:0 3px 0 #fff8}
+.subtitle{font-style:italic;font-size:clamp(16px,3vw,21px);color:#8d5a70;margin:0 0 30px}
+button{
+  border:1px solid #d78eaa;background:linear-gradient(135deg,#fff8fb,#f4c2d5);
+  color:#98516f;padding:14px 28px;border-radius:999px;font:14px Arial,sans-serif;
+  letter-spacing:.08em;cursor:pointer;box-shadow:0 8px 22px #b45e8025;
+  transition:transform .25s,box-shadow .25s;
+}
+button:hover{transform:translateY(-3px);box-shadow:0 12px 25px #b45e8038}
+button:focus-visible{outline:3px solid #b85e82;outline-offset:4px}
+.tiny{font-size:20px;margin-top:22px;color:#c27695;letter-spacing:.3em}
+#letterSection{scroll-margin-top:35px;display:none;padding:18px 0 55px}
+#letterSection.show{display:block;animation:rise .9s both}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.card{
+  max-width:720px;margin:auto;padding:clamp(26px,6vw,58px);
+  background:rgba(255,250,248,.88);border:1px solid #e9b6c9;
+  border-radius:12px 34px 12px 34px;box-shadow:0 18px 55px #a84d7020;
+  position:relative;
+}
+.card:before{content:"";position:absolute;inset:9px;border:1px dashed #e5b0c4;border-radius:7px 28px 7px 28px;pointer-events:none}
+.card-inner{position:relative}
+.card h2{text-align:center;font-size:clamp(26px,5vw,39px);font-weight:normal;color:#b45e82;margin:0 0 28px}
+.card p{font-size:clamp(16px,2.5vw,19px);line-height:1.85;margin:0 0 17px}
+.card .sign{text-align:center;color:#b45e82;font-style:italic;margin-top:26px}
+.divider{text-align:center;color:#d58ba8;letter-spacing:.6em;margin:28px 0;font-size:18px}
+.hidden-wrap{text-align:center;margin:45px auto 0;max-width:720px;padding:25px 16px}
+.hidden-label{font:11px Arial,sans-serif;letter-spacing:.3em;text-transform:uppercase;color:#a95e7d;margin-bottom:13px}
+.hidden-trigger{background:transparent;border:0;box-shadow:none;padding:8px 14px;font:italic 23px Georgia,serif;color:#a94f75;letter-spacing:0}
+.hidden-trigger:hover{box-shadow:none;transform:translateY(-2px);text-shadow:0 0 15px #fff}
+.hidden-message{
+  display:none;margin:18px auto 0;padding:24px 20px;max-width:620px;
+  background:rgba(255,248,251,.78);border:1px solid #e6aec3;border-radius:20px;
+  box-shadow:0 10px 35px #b85e8220;font-size:clamp(19px,4vw,27px);
+  line-height:1.65;color:#a34f73;
+}
+.hidden-message.show{display:block;animation:rise .7s both}
+#typed{display:inline}
+.cursor{display:inline-block;width:2px;height:1em;background:#b85e82;margin-left:4px;vertical-align:-.12em;animation:blink .8s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+footer{text-align:center;font:11px Arial,sans-serif;letter-spacing:.2em;color:#b2768e;margin-top:36px}
+@media(max-width:600px){
+ main{padding-top:58px}.corner{font-size:55px}.bow{font-size:26px}
+ .frame{inset:7px;border-radius:15px}
+ .hero{min-height:75vh}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="frame"></div>
+<div class="corner c1">✿</div><div class="corner c2">❀</div>
+<div class="corner c3">❀</div><div class="corner c4">✿</div>
+<div class="bow one">୨୧</div><div class="bow two">୨୧</div>
+<div id="petals" aria-hidden="true"></div>
+
+<main>
+  <section class="hero" id="home">
+    <div class="eyebrow">A little something, just for you</div>
+    <h1>A Little Surprise<br>For You ♡</h1>
+    <p class="subtitle">Made with love, for a very special girl.</p>
+    <button id="openGift">Open Your Gift&nbsp; ♡</button>
+    <div class="tiny" aria-hidden="true">✧ &nbsp; ❀ &nbsp; ✧</div>
+  </section>
+
+  <section id="letterSection">
+    <article class="card">
+      <div class="card-inner">
+        <h2>To My Beautiful Girl ♡</h2>
+        <p>Happy Birthday, my pretty girl!</p>
+        <p>I hope your day is as beautiful, sweet, and special as you are. I wish you a lifetime full of happiness, endless laughter, beautiful memories, and all the little things that make your heart smile.</p>
+        <p>I'm so grateful to have you in my life. You deserve all the love in the world, and I hope this new chapter brings you everything you've ever wished for.</p>
+        <p>Never forget how special you are, how much you matter, and how lucky the people around you are to have you.</p>
+        <p>You are my best friend and my very first truly close friend. No matter how many people I meet, I don't think I'll ever find someone as wonderful as you, someone who understands me and shares my way of thinking.</p>
+        <p>Happy Birthday once again! Enjoy your special day to the fullest.</p>
+        <p class="sign">Keep shining, keep blooming, and never stop being the lovely girl you are.</p>
+        <div class="divider">♡ &nbsp; ✿ &nbsp; ♡</div>
+        <p class="sign">With lots of love, always. ♡</p>
+      </div>
+    </article>
+
+    <div class="hidden-wrap">
+      <div class="hidden-label">One last little secret</div>
+      <button class="hidden-trigger" id="hiddenButton">A Hidden Message ♡</button>
+      <div class="hidden-message" id="hiddenMessage">
+        <span id="typed"></span><span class="cursor" id="cursor"></span>
+      </div>
+    </div>
+    <footer>MADE WITH LOVE &nbsp; ✿ &nbsp; JUST FOR YOU</footer>
+  </section>
+</main>
+
+<script>
+const petalRoot = document.getElementById('petals');
+for(let i=0;i<18;i++){
+  const p=document.createElement('span'); p.className='petal';
+  p.style.left=(Math.random()*100)+'%';
+  p.style.animationDuration=(11+Math.random()*13)+'s';
+  p.style.animationDelay=(-Math.random()*22)+'s';
+  p.style.setProperty('--drift',(Math.random()*160-80)+'px');
+  p.style.opacity=(.35+Math.random()*.5);
+  p.style.transform='rotate('+(Math.random()*180)+'deg)';
+  petalRoot.appendChild(p);
+}
+document.getElementById('openGift').addEventListener('click',()=>{
+  const section=document.getElementById('letterSection');
+  section.classList.add('show');
+  setTimeout(()=>section.scrollIntoView({behavior:'smooth',block:'start'}),80);
+});
+const secret="You will always be my favorite person and my best friend. I truly love you.";
+let started=false;
+document.getElementById('hiddenButton').addEventListener('click',()=>{
+  const box=document.getElementById('hiddenMessage');
+  box.classList.add('show');
+  if(started)return;
+  started=true;
+  const target=document.getElementById('typed');
+  const cursor=document.getElementById('cursor');
+  let i=0;
+  const timer=setInterval(()=>{
+    target.textContent+=secret.charAt(i++);
+    if(i>=secret.length){clearInterval(timer);cursor.style.display='none';}
+  },48);
+});
+</script>
+</body>
+</html>
